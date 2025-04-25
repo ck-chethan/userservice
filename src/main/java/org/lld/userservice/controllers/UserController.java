@@ -1,5 +1,6 @@
 package org.lld.userservice.controllers;
 
+import org.antlr.v4.runtime.misc.NotNull;
 import org.lld.userservice.dtos.LoginRequestDto;
 import org.lld.userservice.dtos.LogoutRequestDto;
 import org.lld.userservice.dtos.SignUpRequestDto;
@@ -8,10 +9,7 @@ import org.lld.userservice.models.User;
 import org.lld.userservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -39,5 +37,9 @@ public class UserController {
      public ResponseEntity<Void> logout(@RequestBody LogoutRequestDto logoutRequestDto) {
         userService.logout(logoutRequestDto.getToken());
         return ResponseEntity.ok().build();
+     }
+     @PostMapping("/validate/{token}")
+     public ResponseEntity<User> validateToken(@PathVariable("token") String token) {
+        return ResponseEntity.ok(userService.validateToken(token));
      }
 }

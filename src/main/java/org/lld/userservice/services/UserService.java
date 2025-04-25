@@ -7,4 +7,5 @@ public interface UserService {
     Token login(String username, String password);
     User signup(String email, String password, String name);
     void logout(String token);
+    User validateToken(String token);
 }

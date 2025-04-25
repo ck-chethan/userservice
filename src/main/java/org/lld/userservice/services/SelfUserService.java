@@ -7,6 +7,8 @@ import org.lld.userservice.repositories.TokenRepository;
 import org.lld.userservice.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -62,6 +64,16 @@ public class SelfUserService implements UserService {
             tokenRepository.save(tokenToDelete);
         } else {
             throw new RuntimeException("Token not found");
+        }
+    }
+
+    @Override
+    public User validateToken(String token) {
+        Optional<Token> tkn = tokenRepository.findTokenByValueAndIsDeletedAndExpiryDateGreaterThan(token, false, new Date());
+        if (tkn.isPresent()) {
+            return tkn.get().getUser();
+        } else {
+            throw new RuntimeException("Invalid token");
         }
     }
 }
