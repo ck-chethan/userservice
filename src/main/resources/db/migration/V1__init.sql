@@ -1,6 +1,6 @@
 CREATE TABLE `role`
 (
-    id         BIGINT NOT NULL,
+    id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at VARCHAR(255) NULL,
     updated_at VARCHAR(255) NULL,
     deleted_at VARCHAR(255) NULL,
@@ -10,7 +10,7 @@ CREATE TABLE `role`
 
 CREATE TABLE token
 (
-    id          BIGINT NOT NULL,
+    id          BIGINT AUTO_INCREMENT NOT NULL,
     created_at  VARCHAR(255) NULL,
     updated_at  VARCHAR(255) NULL,
     deleted_at  VARCHAR(255) NULL,
@@ -22,7 +22,7 @@ CREATE TABLE token
 
 CREATE TABLE user
 (
-    id                BIGINT NOT NULL,
+    id                BIGINT AUTO_INCREMENT NOT NULL,
     created_at        VARCHAR(255) NULL,
     updated_at        VARCHAR(255) NULL,
     deleted_at        VARCHAR(255) NULL,
