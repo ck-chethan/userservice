@@ -8,6 +8,9 @@ import org.springframework.security.core.GrantedAuthority;
 public class CustomGrantedAuthority implements GrantedAuthority {
     private Role role;
 
+    public CustomGrantedAuthority() {
+    }
+
     public CustomGrantedAuthority(Role role) {
         this.role = role;
     }
