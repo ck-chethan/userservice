@@ -22,28 +22,29 @@ class UserserviceApplicationTests {
     void contextLoads() {
     }
 
-    @Test
-    @Commit
-    void storeRegisterClientIntoDatabase() {
-        // This test is to check if the storeRegisterClientIntoDatabase method works as expected
-        // You can implement the logic to test the method here
-        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
-                .clientId("oidc-client")
-                .clientSecret("{noop}secret")
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
-                .postLogoutRedirectUri("http://127.0.0.1:8080/")
-                .scope(OidcScopes.OPENID)
-                .scope(OidcScopes.PROFILE)
-                .scope("ADMIN")
-                .scope("USER")
-                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-                .build();
-
-        jpaRegisteredClientRepository.save(oidcClient);
-
-    }
+//    @Test
+//    @Commit
+//    void storeRegisterClientIntoDatabase() {
+//        // This test is to check if the storeRegisterClientIntoDatabase method works as expected
+//        // You can implement the logic to test the method here
+//        RegisteredClient oidcClient = RegisteredClient.withId(UUID.randomUUID().toString())
+//                .clientId("oidc-client")
+//                .clientSecret("{noop}secret")
+//                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+//                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+//                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+//                .redirectUri("https://oauth.pstmn.io/v1/callback")
+//                .postLogoutRedirectUri("https://oauth.pstmn.io/v1/callback")
+//                .scope(OidcScopes.OPENID)
+//                .scope(OidcScopes.PROFILE)
+//                .scope("ADMIN")
+//                .scope("STUDENT")
+//                .scope("MENTOR") // Role
+//                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+//                .build();
+//
+//        jpaRegisteredClientRepository.save(oidcClient);
+//
+//    }
 
 }

@@ -1,6 +1,8 @@
 package org.lld.userservice.security.models;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.Getter;
+import lombok.Setter;
 import org.lld.userservice.models.Role;
 import org.lld.userservice.models.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,6 +23,9 @@ public class CustomUserDetails implements UserDetails {
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
+    @Setter
+    @Getter
+    private Long userId;
 
     public CustomUserDetails() {}
 
@@ -37,6 +42,7 @@ public class CustomUserDetails implements UserDetails {
         this.accountNonLocked = true;
         this.credentialsNonExpired = true;
         this.enabled = true;
+        this.userId = user.getId();
     }
 
     @Override
